@@ -82,7 +82,6 @@ const Form = () => {
             type="text"
             name="fullName"
             placeholder="שם מלא"
-            autoFocus
             required
             fullWidth
             variant="outlined"
@@ -102,7 +101,6 @@ const Form = () => {
             placeholder="מספר טלפון"
             type="tel"
             id="phoneNumber"
-            autoFocus
             required
             fullWidth
             variant="outlined"
@@ -128,7 +126,6 @@ const Form = () => {
             placeholder="מספר נפשות במשפחה"
             type="number"
             id="familySize"
-            autoFocus
             required
             fullWidth
             variant="outlined"
@@ -169,7 +166,6 @@ const Form = () => {
             placeholder="תאריך התחלה"
             type="date"
             id="startDate"
-            autoFocus
             required
             fullWidth
             variant="outlined"
@@ -188,7 +184,6 @@ const Form = () => {
             placeholder="תאריך סיום"
             type="date"
             id="endDate"
-            autoFocus
             required
             fullWidth
             variant="outlined"

@@ -37,7 +37,7 @@ const VisuallyHiddenInput = styled("input")({
 // FormCard Component
 const FormCard = ({ title, children }) => {
   return (
-    <Card variant="outlined" sx={{ direction: "rtl", width: "auto" }}>
+    <Card variant="outlined" sx={{ direction: "rtl", minWidth:300 }}>
       <Typography component="h1" variant="h4" sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}>
         {title}
       </Typography>

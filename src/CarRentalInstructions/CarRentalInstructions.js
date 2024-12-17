@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
 import makeStyles from "@mui/styles/makeStyles";
 
 const CarRentalInstructions = () => {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
-    <div>
-              <h1 className={classes.title + " " + classes.centerText}>טופס הזמנת רכב לטובת נופש</h1>
+    <div className={classes.root}>
       <p className={classes.centerText}>
         ברוכים הבאים! הטופס הבא מיועד להזמנת רכב שכור עבור הנופש המשפחתי שלכם. אנא קראו בעיון את ההנחיות ומלאו את כל
         הפרטים הנדרשים.
@@ -39,29 +38,31 @@ const CarRentalInstructions = () => {
         </ol>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CarRentalInstructions
+export default CarRentalInstructions;
 
 const useStyles = makeStyles((theme) => ({
-    app: {
-     
-    },
-    title: {
-      fontSize: "1.5rem",
-      fontWeight: "bold",
-    },
-    centerText: {
-      textAlign: "center",
-    },
-    text: {
-      textAlign: "right",
-    },
-    ol: {
-      direction: "rtl", 
-    },
-    ul: {
-      paddingInlineStart: "1.5em", // Optional for nested lists
-    },
-  }));
+  root: {
+    flex:1,
+  },
+  title: {
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+  },
+  centerText: {
+    textAlign: "center",
+  },
+  text: {
+    textAlign: "right",
+    fontFamily:'Roboto, Helvetica, Arial, sans-serif',
+    lineHeight:2
+  },
+  ol: {
+    direction: "rtl",
+  },
+  ul: {
+    paddingInlineStart: "1.5em", // Optional for nested lists
+  },
+}));

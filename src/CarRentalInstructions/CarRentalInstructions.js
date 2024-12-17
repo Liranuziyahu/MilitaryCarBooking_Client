@@ -43,9 +43,10 @@ const CarRentalInstructions = () => {
 
 export default CarRentalInstructions;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flex:1,
+    padding:5
   },
   title: {
     fontSize: "1.5rem",

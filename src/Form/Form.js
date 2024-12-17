@@ -19,6 +19,8 @@ const Form = () => {
     carType: "",
     startDate: "",
     endDate: "",
+    vacationCity: "", 
+    hotelName: "",    
     file: null,
   });
 
@@ -35,12 +37,16 @@ const Form = () => {
     if (formData.file) {
       if (formData.phoneNumber.toString().length < 6) return alert('מספר הפלאפון לא תקין');
       else {
+        console.log(formData.vacationCity);
+        
         const formDataToSend = new FormData();
         formDataToSend.append("fullName", formData.fullName);
         formDataToSend.append("familySize", formData.familySize);
         formDataToSend.append("carType", formData.carType);
         formDataToSend.append("startDate", formData.startDate);
         formDataToSend.append("endDate", formData.endDate);
+        formDataToSend.append("vacationCity", formData.vacationCity);
+        formDataToSend.append("hotelName", formData.hotelName);
         formDataToSend.append("file", formData.file);
         formDataToSend.append("phoneNumber", formData.phoneNumber);      
           
@@ -195,6 +201,41 @@ const Form = () => {
             }
           />
         </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="vacationCity">עיר נופש</FormLabel>
+          <TextField
+            id="vacationCity"
+            type="text"
+            name="vacationCity"
+            placeholder="עיר נופש"
+            required
+            fullWidth
+            variant="outlined"
+            onChange={(e) => setFormData((prevData) => ({
+              ...prevData,
+              vacationCity: e.target.value,
+            }))}
+          />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="hotelName">שם מלון</FormLabel>
+          <TextField
+            id="hotelName"
+            type="text"
+            name="hotelName"
+            placeholder="שם מלון"
+            required
+            fullWidth
+            variant="outlined"
+            onChange={(e) => setFormData((prevData) => ({
+              ...prevData,
+              hotelName: e.target.value,
+            }))}
+          />
+        </FormControl>
+
         <FormControl>
           <FormLabel htmlFor="file">צירוף אסמכתא</FormLabel>
           <Button

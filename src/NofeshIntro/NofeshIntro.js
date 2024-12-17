@@ -13,6 +13,7 @@ const LogisticIntro = ({setNofeshIntro}) => {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
+        flex:1
       }}
     >
       <Paper elevation={3} sx={{ padding: 3, maxWidth: 600 }}>

@@ -11,7 +11,7 @@ import LogistikaUgdaAvish from '../assets/LogistikaUgdaAvish.png'
 
 const Header = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 , position:"sticky", top: 0}}>
       <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{gap:1}}>

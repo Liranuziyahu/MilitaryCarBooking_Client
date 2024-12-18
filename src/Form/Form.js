@@ -55,6 +55,7 @@ const Form = () => {
           .post(process.env.REACT_APP_MAKE_API, formDataToSend, {
             headers: {
               "Content-Type": "multipart/form-data", // Required for file uploads
+              "X-Origin": origin
             },
           })
           .then((result) => {

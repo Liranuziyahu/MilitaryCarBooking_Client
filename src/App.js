@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Form from "./Form/Form";
-import CarRentalInstructions from "./CarRentalInstructions/CarRentalInstructions";
 import Header from "./Header/Header";
 import NofeshIntro from "./NofeshIntro/NofeshIntro";
+import FormPage from "./Form/FormPage";
+import Router from "./Router/Router";
 
 const formWarp = {
   boxSizing: "border-box",
@@ -17,18 +17,10 @@ const formWarp = {
 };
 
 function App() {
-  const [nofeshIntro, setNofeshIntro] = useState(true);
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: '100vh' }}>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header></Header>
-      {nofeshIntro ? (
-        <NofeshIntro setNofeshIntro={setNofeshIntro} />
-      ) : (
-        <div style={formWarp}>
-          <CarRentalInstructions></CarRentalInstructions>
-          <Form></Form>
-        </div>
-      )}
+      <Router></Router>
     </div>
   );
 }

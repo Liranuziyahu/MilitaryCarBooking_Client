@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Paper, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const LogisticIntro = ({ setNofeshIntro }) => {
+const NofeshIntro = () => {
+  const Navigate = useNavigate()
   return (
     <Box
       sx={{
@@ -41,7 +43,7 @@ const LogisticIntro = ({ setNofeshIntro }) => {
             המערך הלוגיסטי באוגדת איו״ש מאחל לכם חופשה מהנה ונעימה.
           </Typography>
         </div>
-        <Button variant="contained" color="primary" sx={{ marginTop: 3 }} onClick={() => setNofeshIntro(false)}>
+        <Button variant="contained" color="primary" sx={{ marginTop: 3 }} onClick={()=>Navigate('/form')}>
           להגשת פנייה
         </Button>
       </Paper>
@@ -49,4 +51,4 @@ const LogisticIntro = ({ setNofeshIntro }) => {
   );
 };
 
-export default LogisticIntro;
+export default NofeshIntro;

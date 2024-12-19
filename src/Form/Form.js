@@ -30,6 +30,8 @@ const Form = () => {
     phoneNumber: true,
   });
 
+  const today = new Date().toISOString().split("T")[0];
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -177,6 +179,9 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            slotProps={{
+              htmlInput: { min: today },
+            }}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -192,6 +197,9 @@ const Form = () => {
             placeholder="תאריך סיום"
             type="date"
             id="endDate"
+            slotProps={{
+              htmlInput: { min: formData.startDate },
+            }}
             required
             fullWidth
             variant="outlined"

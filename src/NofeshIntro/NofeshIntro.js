@@ -3,7 +3,7 @@ import { Box, Paper, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const NofeshIntro = () => {
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -43,7 +43,7 @@ const NofeshIntro = () => {
             המערך הלוגיסטי באוגדת איו״ש מאחל לכם חופשה מהנה ונעימה.
           </Typography>
         </div>
-        <Button variant="contained" color="primary" sx={{ marginTop: 3 }} onClick={()=>Navigate('/form')}>
+        <Button variant="contained" color="primary" sx={{ marginTop: 3 }} onClick={() => Navigate("/form")}>
           להגשת פנייה
         </Button>
       </Paper>

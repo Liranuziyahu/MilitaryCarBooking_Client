@@ -23,21 +23,21 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 // FormCard Component
 const FormCard = ({ title, children }) => {
   return (
-    <Card variant="outlined" sx={{ direction: "rtl", minWidth:300 }}>
+    <Card variant="outlined" sx={{ direction: "rtl", minWidth: 300 }}>
       <Typography component="h1" variant="h4" sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}>
         {title}
       </Typography>

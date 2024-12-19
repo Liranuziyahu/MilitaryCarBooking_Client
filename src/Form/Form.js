@@ -1,5 +1,5 @@
 // src/components/Form.js
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { isValidPhoneNumber } from "../utils/validators"; // Assuming you have the validator function
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,30 +11,32 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ClearIcon from "@mui/icons-material/Clear";
 import axios from "axios";
 import { FormCard, VisuallyHiddenInput } from "./FormCard";
+import { Context } from "../Context/ContextAPI";
 
 const Form = () => {
-  const [formData, setFormData] = useState({
+  const { submitted, setSubmmited } = useContext(Context);
+  const [validationInput, setValidationInput] = useState({
+    fullName: true,
+    phoneNumber: true,
+  });
+  const today = new Date().toISOString().split("T")[0];
+
+  const initialFormData = {
     fullName: "",
     phoneNumber: "",
-    familySize: "",
+    familySize: 1,
     carType: "",
     startDate: "",
     endDate: "",
     vacationCity: "",
     hotelName: "",
     file: null,
-  });
+  };
 
-  const [validationInput, setValidationInput] = useState({
-    fullName: true,
-    phoneNumber: true,
-  });
-
-  const today = new Date().toISOString().split("T")[0];
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (formData.file) {
       if (formData.phoneNumber.toString().length < 6) return alert("מספר הפלאפון לא תקין");
       else {
@@ -60,11 +62,12 @@ const Form = () => {
             },
           })
           .then((result) => {
-            alert("Form submitted successfully!");
+            setSubmmited(true);
+            setFormData(initialFormData);
           })
           .catch((err) => {
             console.error("Error sending data:", err);
-            alert("There was an error submitting the form.");
+            alert("ישנה שגיאה , לא נשלח.");
           });
       }
     } else return alert("אנא צרף אסמכתא");
@@ -93,6 +96,7 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            value={formData.fullName}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -114,17 +118,16 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            value={formData.phoneNumber}
             onChange={(e) => {
-              if (e.target.value.length > 6) {
-                setFormData((prevData) => ({
-                  ...prevData,
-                  phoneNumber: e.target.value,
-                }));
-                setValidationInput((prevState) => ({
-                  ...prevState,
-                  phoneNumber: isValidPhoneNumber(e.target.value),
-                }));
-              }
+              setValidationInput((prevState) => ({
+                ...prevState,
+                phoneNumber: isValidPhoneNumber(e.target.value),
+              }));
+              setFormData((prevData) => ({
+                ...prevData,
+                phoneNumber: e.target.value,
+              }));
             }}
           />
         </FormControl>
@@ -139,6 +142,10 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            slotProps={{
+              htmlInput: { min: 1 },
+            }}
+            value={formData.familySize}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -160,7 +167,6 @@ const Form = () => {
                 carType: e.target.value,
               }))
             }
-            label="סוג הרכב המבוקש"
           >
             <MenuItem value="">
               <em>בחר...</em>
@@ -179,6 +185,7 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            value={formData.startDate}
             slotProps={{
               htmlInput: { min: today },
             }}
@@ -197,12 +204,13 @@ const Form = () => {
             placeholder="תאריך סיום"
             type="date"
             id="endDate"
-            slotProps={{
-              htmlInput: { min: formData.startDate },
-            }}
             required
             fullWidth
             variant="outlined"
+            slotProps={{
+              htmlInput: { min: formData.startDate },
+            }}
+            value={formData.endDate}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -222,6 +230,7 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            value={formData.vacationCity}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -241,6 +250,7 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
+            value={formData.hotelName}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -292,7 +302,7 @@ const Form = () => {
         </FormControl>
 
         <Divider />
-        <Button type="submit" fullWidth variant="outlined">
+        <Button type="submit" disabled={submitted} fullWidth variant="outlined">
           הגשת פנייה
         </Button>
       </Box>

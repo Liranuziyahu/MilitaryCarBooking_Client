@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import ContextAPI from "./Context/ContextAPI";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ContextAPI>
+        <App />
+      </ContextAPI>
     </BrowserRouter>
   </React.StrictMode>
 );

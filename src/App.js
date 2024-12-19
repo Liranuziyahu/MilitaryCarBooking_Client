@@ -18,9 +18,11 @@ const formWarp = {
 
 function App() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh" }}>
       <Header></Header>
-      <Router></Router>
+      <div style={{ display: "flex", flexDirection: "row-reverse",flexWrap: 'wrap' ,marginTop:100}}>
+        <Router></Router>
+      </div>
     </div>
   );
 }

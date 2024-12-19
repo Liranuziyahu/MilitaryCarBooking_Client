@@ -8,8 +8,9 @@ import FormLabel from "@mui/material/FormLabel";
 import TextField from "@mui/material/TextField";
 import { FormControl, Select, MenuItem } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ClearIcon from "@mui/icons-material/Clear";
 import axios from "axios";
-import { FormCard ,VisuallyHiddenInput } from "./FormCard"; 
+import { FormCard, VisuallyHiddenInput } from "./FormCard";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -19,8 +20,8 @@ const Form = () => {
     carType: "",
     startDate: "",
     endDate: "",
-    vacationCity: "", 
-    hotelName: "",    
+    vacationCity: "",
+    hotelName: "",
     file: null,
   });
 
@@ -29,16 +30,14 @@ const Form = () => {
     phoneNumber: true,
   });
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (formData.file) {
-      if (formData.phoneNumber.toString().length < 6) return alert('מספר הפלאפון לא תקין');
+      if (formData.phoneNumber.toString().length < 6) return alert("מספר הפלאפון לא תקין");
       else {
         console.log(formData.vacationCity);
-        
+
         const formDataToSend = new FormData();
         formDataToSend.append("fullName", formData.fullName);
         formDataToSend.append("familySize", formData.familySize);
@@ -48,14 +47,14 @@ const Form = () => {
         formDataToSend.append("vacationCity", formData.vacationCity);
         formDataToSend.append("hotelName", formData.hotelName);
         formDataToSend.append("file", formData.file);
-        formDataToSend.append("phoneNumber", formData.phoneNumber);      
-          
+        formDataToSend.append("phoneNumber", formData.phoneNumber);
+
         // Send the form data to Make.com's webhook
         axios
           .post(process.env.REACT_APP_MAKE_API, formDataToSend, {
             headers: {
               "Content-Type": "multipart/form-data", // Required for file uploads
-              "X-Origin": origin
+              "X-Origin": origin,
             },
           })
           .then((result) => {
@@ -92,10 +91,12 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
-            onChange={(e) => setFormData((prevData) => ({
-              ...prevData,
-              fullName: e.target.value,
-            }))}
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                fullName: e.target.value,
+              }))
+            }
           />
         </FormControl>
 
@@ -213,10 +214,12 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
-            onChange={(e) => setFormData((prevData) => ({
-              ...prevData,
-              vacationCity: e.target.value,
-            }))}
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                vacationCity: e.target.value,
+              }))
+            }
           />
         </FormControl>
 
@@ -230,15 +233,34 @@ const Form = () => {
             required
             fullWidth
             variant="outlined"
-            onChange={(e) => setFormData((prevData) => ({
-              ...prevData,
-              hotelName: e.target.value,
-            }))}
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                hotelName: e.target.value,
+              }))
+            }
           />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="file">צירוף אסמכתא</FormLabel>
+          {formData?.file?.name && (
+            <FormLabel htmlFor="file">
+              <div style={{ display: "flex" }}>
+                <div
+                  onClick={() => {
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      file: null,
+                    }));
+                  }}
+                >
+                  <ClearIcon />
+                </div>
+                <div>{formData.file.name}</div>
+              </div>
+            </FormLabel>
+          )}
           <Button
             component="label"
             role={undefined}
@@ -260,7 +282,7 @@ const Form = () => {
             />
           </Button>{" "}
         </FormControl>
-        
+
         <Divider />
         <Button type="submit" fullWidth variant="outlined">
           הגשת פנייה

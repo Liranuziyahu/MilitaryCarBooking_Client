@@ -10,9 +10,9 @@ const Header = () => {
   const iconSize = isSmallScreen ? 30 : 50;
 
   return (
-    <Box sx={{ position: "sticky", top: 0, zIndex: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
+    <Box sx={{ position: "fixed", top: 0, zIndex: 1 , width:'100vw'}}>
+      <AppBar position="static" sx={{ height:iconSize ? 60 : 80}} >
+        <Toolbar variant="dense" sx={{ height:'100%'}}>
           <IconButton edge="start" color="inherit" aria-label="menu" sx={{ gap: 1 }}>
             <img src={Atel} alt="LogoAtel" style={{ width: iconSize, height: iconSize }} />
             <img src={PikodMarcaz} alt="LogoPikodMarcaz" style={{ width: iconSize, height: iconSize }} />

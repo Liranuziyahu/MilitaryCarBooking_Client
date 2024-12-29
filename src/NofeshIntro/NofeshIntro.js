@@ -23,7 +23,7 @@ const NofeshIntro = () => {
         </Typography>
         <div style={{ textAlign: "right", direction: "rtl" }}>
           <Typography variant="body1" sx={{ marginBottom: 2, lineHeight: 1.8 }}>
-            תכנית ׳שייכות לוגיסטית׳ היא תכנית אנשים לשיפור איכות וחווית המשרתים לאנשי הקבע בחילות אט״ל באוגדת איוש.
+            תכנית ׳שייכות לוגיסטית׳ היא תכנית אנשים לשיפור איכות וחווית המשרתים לאנשי הקבע באוגדת איוש.
           </Typography>
           <Typography variant="body1" sx={{ marginBottom: 2, lineHeight: 1.8 }}>
             כחלק מהתכנית הוקם חניון רכבים ייעודי ׳הזמן וסע׳, שתכליתו לתת מענה ולשפר את חווית הנסיעה לנופש מבצעי לכם

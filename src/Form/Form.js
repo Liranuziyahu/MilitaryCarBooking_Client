@@ -40,8 +40,6 @@ const Form = () => {
     if (formData.file) {
       if (formData.phoneNumber.toString().length < 6) return alert("מספר הפלאפון לא תקין");
       else {
-        console.log(formData.vacationCity);
-
         const formDataToSend = new FormData();
         formDataToSend.append("fullName", formData.fullName);
         formDataToSend.append("familySize", formData.familySize);
@@ -74,7 +72,7 @@ const Form = () => {
   };
 
   return (
-    <FormCard title="הגשת פנייה">
+    <FormCard title="הגשת פנייה" sx={{ minWidth: "unset" }}>
       <Box
         component="form"
         onSubmit={handleSubmit}

@@ -1,14 +1,16 @@
-import React from 'react'
-import CarRentalInstructions from '../CarRentalInstructions/CarRentalInstructions'
-import Form from './Form'
+import React from "react";
+import CarRentalInstructions from "../CarRentalInstructions/CarRentalInstructions";
+import Form from "./Form";
+import ScrollToTop from "../Router/ScrollToTop";
 
 const FormPage = () => {
   return (
     <>
-        <CarRentalInstructions/>
-        <Form/>
+      <ScrollToTop /> {/* Add ScrollToTop component to reset scroll position on route changes */}
+      <CarRentalInstructions />
+      <Form />
     </>
-  )
-}
+  );
+};
 
-export default FormPage
+export default FormPage;
